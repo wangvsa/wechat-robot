@@ -16,7 +16,7 @@ Wechat Robot使用PHP语言，稍作改动可以即可以在非Wordpress环境�
 
 
 ## 功能截图
-本插件原本为[Freebuf](http://www.freebuf.com)编写，因此直接用Freebuf公众号演示，大家也可以微信关注Freebuf自己体验。
+本插件原为[Freebuf](http://www.freebuf.com)编写，在这直接用Freebuf公众号演示，大家也可以微信关注Freebuf自己体验。
 
 - 显示菜单，输入任何不被识别的字符串均可<br>
 ![菜单](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/menu.png)
@@ -35,15 +35,20 @@ Wechat Robot使用PHP语言，稍作改动可以即可以在非Wordpress环境�
 
 ## 安装
 1. 下载本插件，编辑文件wechat-robot.php<br>
-代码十分简单，您只需要根据需求修改onText函数和onSubscribe函数中的回复内容即可。
-2. 将wechat-robot目录上传到`WP目录/wp-content/plugins/`，在WP后台开启本插件。
+代码十分简单，只需要根据需求修改onText函数和onSubscribe函数中的回复内容即可。
+2. 将wechat-robot目录上传到`WP目录/wp-content/plugins/`，然后在WP后台开启本插件。
 3. 进入微信公众账号后台，开启高级功能－>开发模式，填写token和url<br>
 token填写`wechat`，url填写`你的网站地址/?wechat`，比如`http://www.freebuf.com/?wechat`，注意不要省略`http://`
 
 
 ## 使用与贡献
-如果您打算使用本插件，希望您可以将您的公众号发送至我的邮箱wangvsa@163.com，我将在本文底部展示您的公众号。<br>
-同时欢迎您提出任何建议意见或者帮助改进本插件，让更多的人从中受益。
+如果你打算使用本插件，希望你可以将公众号发送至我的邮箱wangvsa@163.com，我将在本文底部展示。<br>
+同时欢迎提出任何建议意见或者帮助改进本插件，让更多的人从中受益。
+
+
+## TO DO
+1. 增强搜索相关性
+2. 增加小黄鸡功能
 
 
 ## 使用Wechat Robot的公众号
