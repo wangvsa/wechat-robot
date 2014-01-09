@@ -13,9 +13,19 @@ Wechat Robt使用PHP语言，稍作改动可以即可以在非Wordpress环境下
 - 关键字搜索
 - 订阅时显示欢迎菜单
 
+
+## 功能截图
+![菜单](https://raw2.github.com/wangvsa/wechat-robot/screenshot/show_menu.png)
+![菜单2](https://raw2.github.com/wangvsa/wechat-robot/screenshot/show_menu2.png)
+![访问主站](https://raw2.github.com/wangvsa/wechat-robot/screenshot/visit_wp.png)
+![最新文章](https://raw2.github.com/wangvsa/wechat-robot/screenshot/rencent.png)
+![随机文章](https://raw2.github.com/wangvsa/wechat-robot/screenshot/random.png)
+![热门文章](https://raw2.github.com/wangvsa/wechat-robot/screenshot/hotest.png)
+
 ## 安装和使用
 
 1. 下载本插件，编辑文件wechat-robot.php
 2. 将wechat-robot目录上传到 WP目录/wp-content/plugins/目录下
 3. 进入微信公众账号后台，开启高级模式－>开发模式
 其中token填写wechat，url填写 你的网站地址/?wechat-robot
+
