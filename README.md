@@ -33,12 +33,15 @@ Wechat Robot使用PHP语言，稍作改动可以即可以在非Wordpress环境�
 
 
 
-## 安装
+## 安装使用
 1. 下载本插件，编辑文件wechat-robot.php<br>
 代码十分简单，只需要根据需求修改onText函数和onSubscribe函数中的回复内容即可。
 2. 将wechat-robot目录上传到`WP目录/wp-content/plugins/`，然后在WP后台开启本插件。
 3. 进入微信公众账号后台，开启高级功能－>开发模式，填写token和url<br>
 token填写`wechat`，url填写`你的网站地址/?wechat`，比如`http://www.freebuf.com/?wechat`，注意不要省略`http://`
+
+## 详细文档
+见[API wiki](https://github.com/wangvsa/wechat-robot/wiki/API文档)
 
 
 ## 使用与贡献
