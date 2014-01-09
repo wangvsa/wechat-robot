@@ -17,10 +17,10 @@ Wechat Robt使用PHP语言，稍作改动可以即可以在非Wordpress环境下
 ## 功能截图
 ![菜单](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/menu.png)
 ![访问主站](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/visit_wp.png)
-![最新文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/rencent.png)
+![最新文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/recent.png)
 ![随机文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/random.png)
 ![热门文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/hotest.png)
-![搜索文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/serach.png)
+![搜索文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/search.png)
 
 ## 安装和使用
 
