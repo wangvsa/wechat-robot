@@ -33,7 +33,7 @@ Wechat Robot使用PHP语言，稍作改动可以即可以在非Wordpress环境�
 
 
 
-## 安装和使用
+## 安装
 1. 下载本插件，编辑文件wechat-robot.php<br>
 代码十分简单，您只需要根据需求修改onText函数和onSubscribe函数中的回复内容即可。
 2. 将wechat-robot目录上传到`WP目录/wp-content/plugins/`，在WP后台开启本插件。
