@@ -2,7 +2,7 @@
 /*
 Plugin Name: Wechat Robot
 Plugin URI:  http://github.com/wangvsa/wechat-robot
-Description: Wechat Robot的功能包括：0.访问站点 1.查看最新文章 2.查看随机文章 3.查看热门文章 4.关键字搜索
+Description: Wechat Robot的功能包括：0.访问站点 1.查看最新文章 2.查看随机文章 3.查看热门文章 4.关键字搜索 5.访问微社区
 Version: 1.0
 Author: WangChen
 Author URI: http://wangchen.info
@@ -97,6 +97,8 @@ class WechatRobot extends Wechat {
         $msg = $this->getRequest('content');
         if( $msg == '0' ) {
             $this->responseText("访问FreeBuf黑客与极客,请点击下面连接:\n http://www.freebuf.com ");
+        } else if( $msg == '5' ) {
+            $this->responseText("访问FB社区,请点击下面连接:\n http://wx.wsq.qq.com/187329269 ");
         } else if( $msg == '1' ) {
             $this->recentPosts();
         } else if ( $msg == '2' ) {
@@ -111,13 +113,13 @@ class WechatRobot extends Wechat {
             }
         } else {
             $this->responseText("欢迎关注FreeBuf黑客与极客\n 回复[0]访问FreeBuf\n 回复[1]查看最新文章".
-                    "\n 回复[2]查看随机文章\n 回复[3]查看热门文章\n 回复[4关键字]搜索文章\n 回复其他内容查看本菜单");
+                    "\n 回复[2]查看随机文章\n 回复[3]查看热门文章\n 回复[4关键字]搜索文章\n 回复[5]访问FB社区\n 回复其他内容查看本菜单");
         }
     }
 
     protected function onSubscribe() {
         $this->responseText("欢迎关注FreeBuf黑客与极客\n 回复[0]访问FreeBuf\n 回复[1]查看最新文章".
-                "\n 回复[2]查看随机文章\n 回复[3]查看热门文章\n 回复[4关键字]搜索文章\n 回复其他内容查看本菜单");
+                "\n 回复[2]查看随机文章\n 回复[3]查看热门文章\n 回复[4关键字]搜索文章\n 回复[5]访问FB社区 回复其他内容查看本菜单");
     }
 
 

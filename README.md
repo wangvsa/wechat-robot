@@ -1,6 +1,6 @@
 Wechat Robot
 ============
-Wechat Robot是一个WordPress插件，实现了WP站点和微信公众号的连接，支持自动回复、文章搜索、订阅回复等功能。
+Wechat Robot是一个WordPress插件，实现了WP站点和微信公众号的连接，支持自动回复、文章搜索、订阅回复、微社区入口等功能。
 Wechat Robot使用PHP语言，稍作改动可以即可以在非Wordpress环境下使用。
 
 
@@ -11,6 +11,7 @@ Wechat Robot使用PHP语言，稍作改动可以即可以在非Wordpress环境�
 - 查看随机文章
 - 查看热门文章
 - 关键字搜索
+- 访问FB社区
 - 订阅时显示欢迎菜单
 
 
@@ -29,6 +30,8 @@ Wechat Robot使用PHP语言，稍作改动可以即可以在非Wordpress环境�
 - 回复3查看热门文章（本月）<br>
 ![热门文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/hotest.png)
 - 回复4+关键字进行搜索<br>
+![搜索文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/search.png)
+- 回复5访问FB社区<br>
 ![搜索文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/search.png)
 
 
