@@ -32,7 +32,7 @@ Wechat Robot使用PHP语言，稍作改动可以即可以在非Wordpress环境�
 - 回复4+关键字进行搜索<br>
 ![搜索文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/search.png)
 - 回复5访问FB社区<br>
-![搜索文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/search.png)
+![访问FB社区](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/weshequ.png)
 
 
 
