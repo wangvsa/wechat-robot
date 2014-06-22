@@ -12,7 +12,6 @@ define('WEIXIN_ROBOT_PLUGIN_URL', plugins_url('', __FILE__));
 define('WEIXIN_ROBOT_PLUGIN_DIR', WP_PLUGIN_DIR.'/'. dirname(plugin_basename(__FILE__)));
 define('WEIXIN_ROBOT_PLUGIN_FILE',  __FILE__);
 
-include(WEIXIN_ROBOT_PLUGIN_DIR.'/functions.php');
 require(WEIXIN_ROBOT_PLUGIN_DIR.'/wechat.php');
 
 add_action('parse_request', 'wechat_robot_redirect', 4);
@@ -23,17 +22,17 @@ function wechat_robot_redirect( $wp ) {
 	    "button":[
 	    {
 	      "type":"view",
-	      "name":"主页",
+	      "name":"home",
 	      "url":"http://freebuf.com"
 	    },
 	    {
 	      "type":"click",
-	      "name":"最新文章",
+	      "name":"artilces",
 	      "key":"MENU_ARTICLES"
 	    },
 	    {
 	      "type":"view",
-	      "name":"微社区",
+	      "name":"wsq",
 	      "url":"http://wx.wsq.qq.com/187329269"
 	    }]
   	}');
