@@ -1,10 +1,14 @@
 <?php
+
 /**
  * 微信公众平台 PHP SDK
  *
  * WangChen
  *
  */
+
+define('WEIXIN_ROBOT_PLUGIN_DIR', WP_PLUGIN_DIR.'/'. dirname(plugin_basename(__FILE__)));
+include(WEIXIN_ROBOT_PLUGIN_DIR.'/functions.php');
 
 /**
  * 微信公众平台处理类
@@ -99,6 +103,36 @@ class Wechat {
     return NULL;
   }
 
+  /**
+   *  获取token，使用文件缓存机制
+   *  首先检查文件是否存在，存在则检查token是否过期
+   *  若过期或文件不存在，则向服务器请求，然后存入文件
+   *
+   */
+  protected function get_access_token() {
+    // 检查文件并查看token是否过期
+    if(file_exists("access_token.json")) {
+      $json = file_get_contents("access_token.json");
+      $array = json_decode($json, true);
+      $expires_time = intval($array["time"]) + intval($array["expires_in"]);
+      $now = time();
+      if($now < $expires_time)
+        return $array["access_token"];
+    }
+
+    // 如果文件不存在或者token已经过期则向服务器请求
+    $json = http_get("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx0fc7ca6909bc89e0&secret=0a05f620788890fe452be1f443bf45bb");
+    $array = json_decode($json, true);
+    $array["time"] = time();
+    $json = json_encode($array);
+
+    // 写入文件
+    $file = fopen("access_token.json", wb);
+    fwrite($file, $json);
+    fclose($file);
+
+    return $array["access_token"];
+  }
 
 
 
