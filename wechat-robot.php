@@ -19,6 +19,24 @@ add_action('parse_request', 'wechat_robot_redirect', 4);
 function wechat_robot_redirect( $wp ) {
 	if( isset( $_GET['wechat'] ) ) {
     $robot = new WechatRobot("wechat", true);
+		$robot->create_menu('{
+	    "button":[
+	    {
+	      "type":"view",
+	      "name":"主页",
+	      "url":"http://freebuf.com"
+	    },
+	    {
+	      "type":"click",
+	      "name":"最新文章",
+	      "key":"MENU_ARTICLES"
+	    },
+	    {
+	      "type":"view",
+	      "name":"微社区",
+	      "url":"http://wx.wsq.qq.com/187329269"
+	    }]
+  	}');
     $robot->run();
   }
 }

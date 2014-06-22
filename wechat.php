@@ -134,6 +134,12 @@ class Wechat {
     return $array["access_token"];
   }
 
+  // 创建菜单，根据微信api传入菜单json
+  protected function create_menu($menu_json) {
+    $access_token = get_access_token();
+    http_post("https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$access_token, $menu_json);
+  }
+
 
 
   /**
