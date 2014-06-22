@@ -109,7 +109,7 @@ class Wechat {
    *  若过期或文件不存在，则向服务器请求，然后存入文件
    *
    */
-  protected function get_access_token() {
+  public function get_access_token() {
     // 检查文件并查看token是否过期
     if(file_exists("access_token.json")) {
       $json = file_get_contents("access_token.json");
@@ -135,8 +135,8 @@ class Wechat {
   }
 
   // 创建菜单，根据微信api传入菜单json
-  protected function create_menu($menu_json) {
-    $access_token = get_access_token();
+  public function create_menu($menu_json) {
+    $access_token = $this->get_access_token();
     http_post("https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$access_token, $menu_json);
   }
 
