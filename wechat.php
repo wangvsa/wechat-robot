@@ -127,7 +127,7 @@ class Wechat {
     }
 
     // 如果文件不存在或者token已经过期则向服务器请求
-    $json = http_get("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$this->$appid."&secret=".$this->$secret);
+    $json = http_get("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$this->appid."&secret=".$this->secret);
     $array = json_decode($json, true);
     $array["time"] = time();
     $json = json_encode($array);
