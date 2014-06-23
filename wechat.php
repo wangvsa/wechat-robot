@@ -31,7 +31,7 @@ class Wechat {
    * @param boolean $debug 调试模式，默认为关闭
    */
   public function __construct($token, $appid, $secret, $debug = FALSE) {
-    $this->$appid = $appid;
+    $this->appid = $appid;
     $this->secret = $secret;
     if (!$this->validateSignature($token)) {
       exit('签名验证失败');
