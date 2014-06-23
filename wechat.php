@@ -115,7 +115,7 @@ class Wechat {
    *
    */
   public function get_access_token() {
-    $path = WEIXIN_ROBOT_PLUGIN_DIR."access_token.json";
+    $path = WEIXIN_ROBOT_PLUGIN_DIR."/access_token.json";
     // 检查文件并查看token是否过期
     if(file_exists($path)) {
       $json = file_get_contents($path);

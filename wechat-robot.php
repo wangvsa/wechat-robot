@@ -14,7 +14,7 @@ require(WEIXIN_ROBOT_PLUGIN_DIR.'/wechat.php');
 add_action('parse_request', 'wechat_robot_redirect', 4);
 function wechat_robot_redirect( $wp ) {
 	if( isset( $_GET['wechat'] ) ) {
-    $robot = new WechatRobot("wechat", "wxdb0f91aeef0b42f4", "a5eceb21da809b780658c8546f58d68d", true);
+    $robot = new WechatRobot("wechat", "wx0fc7ca6909bc89e0", "0a05f620788890fe452be1f443bf45bb", true);
 		$robot->create_menu('{
 	    "button":[
 	    {
