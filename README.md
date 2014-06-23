@@ -6,6 +6,7 @@ Wechat Robot使用PHP语言，稍作改动可以即可以在非Wordpress环境�
 
 
 ## 功能列表
+- 自定义菜单
 - 访问WP网站
 - 查看最新文章
 - 查看随机文章
@@ -19,7 +20,9 @@ Wechat Robot使用PHP语言，稍作改动可以即可以在非Wordpress环境�
 ## 功能截图
 本插件原为[Freebuf](http://www.freebuf.com)编写，在这直接用Freebuf公众号演示，大家也可以微信关注Freebuf自己体验。
 
-- 显示菜单，输入任何不被识别的字符串均可<br>
+- 自定义菜单
+![自定义菜单](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/custom_menu.png)
+- 显示欢迎菜单，输入任何不被识别的字符串均可<br>
 ![菜单](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/menu.png)
 - 回复0可以访问主站<br>
 ![访问主站](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/visit_wp.png)
@@ -38,8 +41,11 @@ Wechat Robot使用PHP语言，稍作改动可以即可以在非Wordpress环境�
 
 ## 安装使用
 1. 下载本插件，编辑文件wechat-robot.php<br>
-代码十分简单，只需要根据需求修改onText函数和onSubscribe函数中的回复内容即可。
-2. 将wechat-robot目录上传到`WP目录/wp-content/plugins/`，然后在WP后台开启本插件。
+  * 修改WechatRobot构造函数参数中的`appid`和`secret`
+  * 若支持菜单则参照[微信API](http://mp.weixin.qq.com/wiki/index.php?title=%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8F%9C%E5%8D%95%E5%88%9B%E5%BB%BA%E6%8E%A5%E5%8F%A3)填写`create_menu`中的菜单参数，然后按需修改`onClick`函数来响应菜单点击事件。
+  * 若不支持菜单，则注释掉`create_menu`调用即可。
+  * 按需修改`onText`函数和`onSubscribe`函数，响应用户信息和订阅事件。
+2. 将wechat-robot目录上传到WP目录`/wp-content/plugins/`，然后在WP后台开启本插件。
 3. 进入微信公众账号后台，开启高级功能－>开发模式，填写token和url<br>
 token填写`wechat`，url填写`你的网站地址/?wechat`，比如`http://www.freebuf.com/?wechat`，注意不要省略`http://`
 
@@ -50,11 +56,6 @@ token填写`wechat`，url填写`你的网站地址/?wechat`，比如`http://www.
 ## 使用与贡献
 如果你打算使用本插件，希望你可以将公众号发送至我的邮箱wangvsa@163.com，我将在本文底部展示。<br>
 同时欢迎提出任何建议意见或者帮助改进本插件，让更多的人从中受益。
-
-
-## TO DO
-1. 增强搜索相关性
-2. 增加小黄鸡功能
 
 
 ## 使用Wechat Robot的公众号
