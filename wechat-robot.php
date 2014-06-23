@@ -8,34 +8,50 @@ Author: WangChen
 Author URI: http://wangchen.info
 */
 
-define('WEIXIN_ROBOT_PLUGIN_URL', plugins_url('', __FILE__));
-define('WEIXIN_ROBOT_PLUGIN_DIR', WP_PLUGIN_DIR.'/'. dirname(plugin_basename(__FILE__)));
-define('WEIXIN_ROBOT_PLUGIN_FILE',  __FILE__);
+//define('WEIXIN_ROBOT_PLUGIN_URL', plugins_url('', __FILE__));
+//define('WEIXIN_ROBOT_PLUGIN_DIR', WP_PLUGIN_DIR.'/'. dirname(plugin_basename(__FILE__)));
+//define('WEIXIN_ROBOT_PLUGIN_FILE',  __FILE__);
 
 require(WEIXIN_ROBOT_PLUGIN_DIR.'/wechat.php');
 
 add_action('parse_request', 'wechat_robot_redirect', 4);
 function wechat_robot_redirect( $wp ) {
 	if( isset( $_GET['wechat'] ) ) {
-    $robot = new WechatRobot("wechat", true);
+    $robot = new WechatRobot("wechat", "wxdb0f91aeef0b42f4", "a5eceb21da809b780658c8546f58d68d", true);
 		$robot->create_menu('{
 	    "button":[
 	    {
-	      "type":"view",
-	      "name":"home",
-	      "url":"http://freebuf.com"
+				"name":"阅读文章",
+				"sub_button":[
+					{
+						"type":"click",
+						"name":"最新文章",
+						"key":"MENU_RECENT_POSTS"
+					},
+					{
+						"type":"click",
+						"name":"随机文章",
+						"key":"MENU_RANDOM_POSTS"
+					},
+					{
+						"type":"click",
+						"name":"热门文章",
+						"key":"MENU_HOTEST_POSTS"
+					}
+				]
 	    },
 	    {
-	      "type":"click",
-	      "name":"artilces",
-	      "key":"MENU_ARTICLES"
+	      "type":"view",
+	      "name":"FB主页",
+	      "url":"http://www.freebuf.com"
 	    },
 	    {
 	      "type":"view",
-	      "name":"wsq",
+	      "name":"微社区",
 	      "url":"http://wx.wsq.qq.com/187329269"
 	    }]
   	}');
+		$robot->fetch_menu();
     $robot->run();
   }
 }
@@ -104,7 +120,7 @@ class WechatRobot extends Wechat {
         'year' => date('Y'),
         'monthnum' => date('m')
     );
-      $this->queryAndResponse( $arg );
+    $this->queryAndResponse( $arg );
   }
 
 
@@ -136,5 +152,17 @@ class WechatRobot extends Wechat {
     $this->responseText("欢迎关注FreeBuf黑客与极客\n 回复[0]访问FreeBuf\n 回复[1]查看最新文章".
 		"\n 回复[2]查看随机文章\n 回复[3]查看热门文章\n 回复[4关键字]搜索文章\n 回复[5]访问FB社区 回复其他内容查看本菜单");
   }
+
+	// 点击菜单
+	protected function onClick() {
+		$key = $this->getRequest('EventKey');
+		if($key=="MENU_RECENT_POSTS") {
+    	$this->recentPosts();
+		} else if($key=="MENU_RANDOM_POSTS") {
+      $this->randomPosts();
+		} else if($key=="MENU_HOTEST_POSTS") {
+      $this->hotestPosts();
+		}
+	}
 
 }

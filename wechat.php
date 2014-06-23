@@ -21,13 +21,18 @@ class Wechat {
   // 以数组的形式保存微信服务器每次发来的请求
   private $request;
 
+  // 用户获取token，目前仅用在创建菜单
+  private $appid, $secret;
+
   /**
    * 初始化，判断此次请求是否为验证请求，并以数组形式保存
    *
    * @param string $token 验证信息
    * @param boolean $debug 调试模式，默认为关闭
    */
-  public function __construct($token, $debug = FALSE) {
+  public function __construct($token, $appid, $secret, $debug = FALSE) {
+    $this->$appid = $appid;
+    $this->secret = $secret;
     if (!$this->validateSignature($token)) {
       exit('签名验证失败');
     }
@@ -110,9 +115,10 @@ class Wechat {
    *
    */
   public function get_access_token() {
+    $path = WEIXIN_ROBOT_PLUGIN_DIR."access_token.json";
     // 检查文件并查看token是否过期
-    if(file_exists("access_token.json")) {
-      $json = file_get_contents("access_token.json");
+    if(file_exists($path)) {
+      $json = file_get_contents($path);
       $array = json_decode($json, true);
       $expires_time = intval($array["time"]) + intval($array["expires_in"]);
       $now = time();
@@ -121,15 +127,17 @@ class Wechat {
     }
 
     // 如果文件不存在或者token已经过期则向服务器请求
-    $json = http_get("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx0fc7ca6909bc89e0&secret=0a05f620788890fe452be1f443bf45bb");
+    $json = http_get("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$this->$appid."&secret=".$this->$secret);
     $array = json_decode($json, true);
     $array["time"] = time();
     $json = json_encode($array);
 
     // 写入文件
-    $file = fopen("access_token.json", wb);
-    fwrite($file, $json);
-    fclose($file);
+    $file = fopen($path, "wb");
+    if($file!==false) {
+      fwrite($file, $json);
+      fclose($file);
+    }
 
     return $array["access_token"];
   }
@@ -137,7 +145,14 @@ class Wechat {
   // 创建菜单，根据微信api传入菜单json
   public function create_menu($menu_json) {
     $access_token = $this->get_access_token();
-    http_post("https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$access_token, $menu_json);
+    $res = http_post("https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$access_token, $menu_json);
+    return $res;
+  }
+
+  public function fetch_menu() {
+    $access_token = $this->get_access_token();
+    $res = http_get("https://api.weixin.qq.com/cgi-bin/menu/get?access_token=".$access_token);
+    return $res;
   }
 
 
