@@ -8,10 +8,7 @@ Author: WangChen
 Author URI: http://wangchen.info
 */
 
-//define('WEIXIN_ROBOT_PLUGIN_URL', plugins_url('', __FILE__));
-//define('WEIXIN_ROBOT_PLUGIN_DIR', WP_PLUGIN_DIR.'/'. dirname(plugin_basename(__FILE__)));
-//define('WEIXIN_ROBOT_PLUGIN_FILE',  __FILE__);
-
+define('WEIXIN_ROBOT_PLUGIN_DIR', WP_PLUGIN_DIR.'/'. dirname(plugin_basename(__FILE__)));
 require(WEIXIN_ROBOT_PLUGIN_DIR.'/wechat.php');
 
 add_action('parse_request', 'wechat_robot_redirect', 4);
@@ -51,7 +48,6 @@ function wechat_robot_redirect( $wp ) {
 	      "url":"http://wx.wsq.qq.com/187329269"
 	    }]
   	}');
-		$robot->fetch_menu();
     $robot->run();
   }
 }
