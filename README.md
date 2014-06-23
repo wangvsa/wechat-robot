@@ -20,7 +20,7 @@ Wechat Robot使用PHP语言，稍作改动可以即可以在非Wordpress环境�
 ## 功能截图
 本插件原为[Freebuf](http://www.freebuf.com)编写，在这直接用Freebuf公众号演示，大家也可以微信关注Freebuf自己体验。
 
-- 自定义菜单
+- 自定义菜单<br>
 ![自定义菜单](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/custom_menu.png)
 - 显示欢迎菜单，输入任何不被识别的字符串均可<br>
 ![菜单](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/menu.png)
