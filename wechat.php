@@ -118,42 +118,73 @@ class Wechat {
     $path = WEIXIN_ROBOT_PLUGIN_DIR."/access_token.json";
     // 检查文件并查看token是否过期
     if(file_exists($path)) {
-      $json = file_get_contents($path);
-      $array = json_decode($json, true);
-      $expires_time = intval($array["time"]) + intval($array["expires_in"]);
-      $now = time();
-      if($now < $expires_time)
-        return $array["access_token"];
+        $json = file_get_contents($path);
+        if(!isset($json['access_token']) || !isset($json['time']) || !isset($json['expires_in']))
+            return false;
+
+        $array = json_decode($json, true);
+        $expires_time = intval($array["time"]) + intval($array["expires_in"]) - 100;
+        $now = time();
+        if($now < $expires_time)
+            return $array["access_token"];
     }
 
     // 如果文件不存在或者token已经过期则向服务器请求
-    $json = file_get_contents("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$this->appid."&secret=".$this->secret);
-    $array = json_decode($json, true);
-    $array["time"] = time();
-    $json = json_encode($array);
+    $result = $this->http_get("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$this->appid."&secret=".$this->secret);
+    if($result) {
+        $json = json_decode($result, true);
+        if(!$json || isset($json['errcode']))
+            return false;
 
-    // 写入文件
-    $file = fopen($path, "wb");
-    if($file!==false) {
-      fwrite($file, $json);
-      fclose($file);
+        $json["time"] = time();
+        $json = json_encode($json);
+
+        // 写入文件
+        $file = fopen($path, "wb");
+        if($file!==false) {
+          fwrite($file, $json);
+          fclose($file);
+        }
+        return $json["access_token"];
+    }
+    return false;
+
+  }
+
+
+  /**
+   * 使用curl实现GET请求
+   */
+    private function http_get($url) {
+        $oCurl = curl_init();
+        if(stripos($url, "https://")!==FALSE) {
+          curl_setopt($oCurl, CURLOPT_SSL_VERIFYPEER, FALSE);
+          curl_setopt($oCurl, CURLOPT_SSL_VERIFYHOST, FALSE);
+        }
+        curl_setopt($oCurl, CURLOPT_URL, $url);
+        curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1);
+        $content = curl_exec($oCurl);
+        $status = curl_getinfo($oCurl);
+        curl_close($oCurl);
+        if(intval($status["http_code"])==200)
+            return $content;
+        else
+            return false;
     }
 
-    return $array["access_token"];
-  }
 
-  // 创建菜单，根据微信api传入菜单json
-  public function create_menu($menu_json) {
-    $access_token = $this->get_access_token();
-    $res = http_post("https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$access_token, $menu_json);
-    return $res;
-  }
+    // 创建菜单，根据微信api传入菜单json
+    public function create_menu($menu_json) {
+        $access_token = $this->get_access_token();
+        $res = http_post("https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$access_token, $menu_json);
+        return $res;
+    }
 
-  public function fetch_menu() {
-    $access_token = $this->get_access_token();
-    $res = http_get("https://api.weixin.qq.com/cgi-bin/menu/get?access_token=".$access_token);
-    return $res;
-  }
+    public function fetch_menu() {
+        $access_token = $this->get_access_token();
+        $res = http_get("https://api.weixin.qq.com/cgi-bin/menu/get?access_token=".$access_token);
+        return $res;
+    }
 
 
 
