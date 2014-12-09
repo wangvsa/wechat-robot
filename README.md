@@ -21,21 +21,21 @@ Wechat Robot使用PHP语言，稍作改动可以即可以在非Wordpress环境�
 本插件原为[Freebuf](http://www.freebuf.com)编写，在这直接用Freebuf公众号演示，大家也可以微信关注Freebuf自己体验。
 
 - 自定义菜单<br>
-![自定义菜单](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/custom_menu.png)
+![自定义菜单](https://github.com/wangvsa/wechat-robot/blob/master/screenshot/custom_menu.png)
 - 显示欢迎菜单，输入任何不被识别的字符串均可<br>
-![菜单](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/menu.png)
+![菜单](https://github.com/wangvsa/wechat-robot/blob/master/screenshot/menu.png)
 - 回复0可以访问主站<br>
-![访问主站](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/visit_wp.png)
+![访问主站](https://github.com/wangvsa/wechat-robot/blob/master/screenshot/visit_wp.png)
 - 回复1查看最新文章<br>
-![最新文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/recent.png)
+![最新文章](https://github.com/wangvsa/wechat-robot/blob/master/screenshot/recent.png))
 - 回复2查看随机文章<br>
-![随机文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/random.png)
+![随机文章](https://github.com/wangvsa/wechat-robot/blob/master/screenshot/random.png)
 - 回复3查看热门文章（本月）<br>
-![热门文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/hotest.png)
+![热门文章](https://github.com/wangvsa/wechat-robot/blob/master/screenshot/hotest.png)
 - 回复4+关键字进行搜索<br>
-![搜索文章](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/search.png)
+![搜索文章](https://github.com/wangvsa/wechat-robot/blob/master/screenshot/search.png)
 - 回复5访问FB社区<br>
-![访问FB社区](https://raw2.github.com/wangvsa/wechat-robot/master/screenshot/weshequ.png)
+![访问FB社区](https://github.com/wangvsa/wechat-robot/blob/master/screenshot/weishequ.png)
 
 
 
