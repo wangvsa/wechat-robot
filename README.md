@@ -52,11 +52,3 @@ token填写`wechat`，url填写`你的网站地址/?wechat`，比如`http://www.
 ## 详细文档
 见[API wiki](https://github.com/wangvsa/wechat-robot/wiki/API文档)
 
-
-## 使用与贡献
-如果你打算使用本插件，希望你可以将公众号发送至我的邮箱wangvsa@163.com，我将在本文底部展示。<br>
-同时欢迎提出任何建议意见或者帮助改进本插件，让更多的人从中受益。
-
-
-## 使用Wechat Robot的公众号
-- 黑客与极客,微信号Freebuf
